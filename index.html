@@ -11,7 +11,10 @@
   <script>
     var option1IsCorrect = false;
     
-    var real = [
+    function load() {
+      document.getElementById("result").innerHTML="";
+      
+      var real = [
         'wedding cake',
         'purple punch',
         'sour diesel',
@@ -41,9 +44,7 @@
         'allowed fruit',
         'danimal cookies'
       ];
-    
-    function load() {
-      document.getElementById("result").innerHTML="";
+      
       var real = real[Math.floor(Math.random() * real.length)];
       var fake = fake[Math.floor(Math.random() * fake.length)];
 
