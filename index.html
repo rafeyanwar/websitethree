@@ -1,56 +1,75 @@
 <html>
   <!-- stop looking here narc -->
   <body>
-    <p id="test">test</p>
-    <button id="option1">one</button>
-    <button id="option2">two</button>
+    <button onclick="option1Clicked()" id="option1">one</button>
+    <button onclick="option2Clicked()" id="option2">two</button>
+    <p id="result"></p>
   </body>
   <script>
+    var option1IsCorrect = false;
+    
     function load() {
-    var real = [
-      'wedding cake',
-      'purple punch',
-      'sour diesel',
-      'grandaddy purple',
-      'pineapple express',
-      'white widow',
-      'northern lights',
-      'cherry pie',
-      'cereal milk',
-      'slurricane',
-      'lava cake',
-      'forbidden fruit',
-      'animal cookies'
-    ];
-    
-    var fake = [
-      'gushers',
-      'snickers',
-      'twix',
-      'skittles',
-      'panda bear',
-      'baseball cap',
-      'lunchbox',
-      'picture frame',
-      'hikers delight',
-      'oh lawd',
-      'lick ur brain',
-      'allowed fruit',
-      'danimal cookies'
-    ];
-    
-    var real = real[Math.floor(Math.random() * real.length)];
-    var fake = fake[Math.floor(Math.random() * fake.length)];
-    
-    if (Math.random() > 0.5) {
-      document.getElementById("option1").innerHTML=real;
-      document.getElementById("option2").innerHTML=fake;
-    } else {
-      document.getElementById("option2").innerHTML=real;
-      document.getElementById("option1").innerHTML=fake;
+      var real = [
+        'wedding cake',
+        'purple punch',
+        'sour diesel',
+        'grandaddy purple',
+        'pineapple express',
+        'white widow',
+        'northern lights',
+        'cherry pie',
+        'cereal milk',
+        'slurricane',
+        'lava cake',
+        'forbidden fruit',
+        'animal cookies'
+      ];
+
+      var fake = [
+        'gushers',
+        'snickers',
+        'twix',
+        'skittles',
+        'panda bear',
+        'baseball cap',
+        'lunchbox',
+        'picture frame',
+        'hikers delight',
+        'oh lawd',
+        'lick ur brain',
+        'allowed fruit',
+        'danimal cookies'
+      ];
+
+      var real = real[Math.floor(Math.random() * real.length)];
+      var fake = fake[Math.floor(Math.random() * fake.length)];
+
+      if (Math.random() > 0.5) {
+        document.getElementById("option1").innerHTML=real;
+        document.getElementById("option2").innerHTML=fake;
+        option1IsCorrect = true;
+      } else {
+        document.getElementById("option2").innerHTML=real;
+        document.getElementById("option1").innerHTML=fake;
+        option1IsCorrect = false;
+      }
     }
-    document.getElementById("test").innerHTML=real;
-  }
-  window.onload = load;
+    
+    function option1Clicked() {
+      if (option1IsCorrect) {
+        document.getElementById("result").innerHTML="Correct!";
+      } else {
+        document.getElementById("result").innerHTML="Wrong!";
+      }
+    }
+    
+    function option2Clicked() {
+      if (!option1IsCorrect) {
+        document.getElementById("result").innerHTML="Correct!";
+      } else {
+        document.getElementById("result").innerHTML="Wrong!";
+      }
+    }
+    window.onload = load;
   </script>
 </html>
