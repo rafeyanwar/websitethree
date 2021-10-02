@@ -1,15 +1,17 @@
 <html>
   <!-- stop looking here narc -->
   <body>
+    <p>Which one is the real weed strain?</p>
     <button onclick="option1Clicked()" id="option1">one</button>
     <button onclick="option2Clicked()" id="option2">two</button>
     <p id="result"></p>
+    <br>
+    <button onclick="load()" id="option2">Play Again</button>
   </body>
   <script>
     var option1IsCorrect = false;
     
-    function load() {
-      var real = [
+    var real = [
         'wedding cake',
         'purple punch',
         'sour diesel',
@@ -24,7 +26,6 @@
         'forbidden fruit',
         'animal cookies'
       ];
-
       var fake = [
         'gushers',
         'snickers',
@@ -40,7 +41,9 @@
         'allowed fruit',
         'danimal cookies'
       ];
-
+    
+    function load() {
+      document.getElementById("result").innerHTML="";
       var real = real[Math.floor(Math.random() * real.length)];
       var fake = fake[Math.floor(Math.random() * fake.length)];
 
@@ -61,6 +64,7 @@
       } else {
         document.getElementById("result").innerHTML="Wrong!";
       }
+      disableButtons()
     }
     
     function option2Clicked() {
@@ -69,7 +73,14 @@
       } else {
         document.getElementById("result").innerHTML="Wrong!";
       }
+      disableButtons()
     }
+    
+    function disableButtons() {
+      document.getElementById("option1").disabled=true;
+      document.getElementById("option2").disabled=true;
+    }
+    
     window.onload = load;
   </script>
 </html>
